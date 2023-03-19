@@ -18,6 +18,46 @@ print(res)
 
 
 
+dsa=[]
+for i in range(w):
+      s=str(input())
+      df=s.split()
+      h=[int(i) for i in df]
+      a.append(h)     
+for i in range(len(a)):
+      for j in range(len(a[i])):
+            k=0
+            if a[i][j]==1:
+                  k+=1
+                  a[i][j]=-1
+                  for m in range(len(a)):
+                        for t in range(len(a[m])):
+                              if a[m][t]==-1:
+                                    if a[m][t+1]==1:
+                                          k+=1
+                                          a[m][t+1]=-1
+                                    if a[m-1][t]==1:
+                                          k+=1
+                                          a[m-1][t]=-1
+                                    if a[m+1][t]==1:
+                                          k+=1
+                                          a[m+1][t]=-1
+                                          if a[m+1][t-1]==1:
+                                                a[m+1][t-1]=-1
+                                                k+=1
+                                          if a[m+1][t+1]==1:
+                                                a[m+1][t+1]=-1
+                                                k+=1
+                                    if a[m][t+1]==1:
+                                          k+=1
+                                          a[m][t+1]=-1
+                  for z in range(len(a)):
+                        for l in range(len(a[z])):
+                              if a[z][l]==-1:
+                                    a[z][l]=0
+            if k!=0:
+                  dsa.append(k)
+print(k,dsa)
 
 
 a=[0]*10
@@ -49,3 +89,39 @@ for i in range (len(a)):
         if a[i][j]==1 or a[i][j]==2:
             s=s+1
 print(k,s)
+
+n=int(input())
+r=float(input())
+a=[]
+gh=[]
+for i in range(n):
+      s=str(input())
+      d=s.split()
+      t=[float(i) for i in d]
+      a.append(t)
+                  #a.pop(sdf[ty][0])
+k=0
+st=a.pop()
+cloud=[]
+z=[]
+z.append(st)
+clouds=[]
+for i in range(len(a)):
+      x1=st[0]
+      y1=st[1]
+      z1=st[2]
+      x2=a[i][0]
+      y2=a[i][1]
+      z2=a[i][2]
+      dist=((x2-x1)**2+(y2-y1)**2+(z2-z1)**2)*0.5
+      z=[a[i][0],a[i][1],a[i][2],dist]
+      cloud.append(z)
+sdf=sorted(cloud,key=lambda x: x[3])
+while k<9:
+      for ty in range (len(sdf)):
+            clouds.append(sdf[ty])
+            sdf[ty].pop(3)
+            kj=sdf[ty]
+            a.remove(kj)
+            k+=1
+print(clouds,a)
